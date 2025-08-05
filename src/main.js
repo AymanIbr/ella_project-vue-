@@ -9,6 +9,11 @@ import { createPinia } from "pinia";
 import mitt from "mitt";
 const Emitter = mitt();
 
+// Swiper Config
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
 // vuetify
 
 import "vuetify/styles";

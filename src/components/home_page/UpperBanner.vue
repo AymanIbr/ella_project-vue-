@@ -28,7 +28,7 @@
 <style lang="scss">
 .banner {
   .parent {
-    height: 390px;
+    height: 420px;
     background-image: url("../../assets/images/banner.png");
     background-size: cover;
     background-attachment: left top;

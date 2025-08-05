@@ -1,11 +1,12 @@
 <template>
   <div class="layout">
-    <v-layout>
+    <v-layout class="position-relative">
       <CartDrawer />
       <v-main style="padding-top: 150px">
         <slot />
       </v-main>
       <AppNav />
+      <FixedNav />
       <AppFooter />
     </v-layout>
   </div>
@@ -15,6 +16,7 @@
 import AppNav from "./AppNav.vue";
 import AppFooter from "./AppFooter.vue";
 import CartDrawer from "./CartDrawer.vue";
+import FixedNav from "./FixedNav.vue";
 export default {
   data: () => ({
     drawer: true,
@@ -23,6 +25,7 @@ export default {
     AppNav,
     AppFooter,
     CartDrawer,
+    FixedNav,
   },
 };
 </script>
