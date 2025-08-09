@@ -1,11 +1,27 @@
 <template>
   <div class="products-swiper pt-16">
     <div class="title mb-5 px-5 d-flex align-center justify-space-between">
-      <h3 style="font-weight: 900; font-size: 30px" class="text-red">
-        Flash Deals
+      <h3
+        style="font-weight: 900; font-size: 30px"
+        :class="[`text-${titleColor}`]"
+      >
+        {{ title }}
       </h3>
       <a href="#" class="text-black" style="font-size: 14px">Shop All</a>
     </div>
+    <v-container fluid v-if="!products.length">
+      <v-row>
+        <v-col cols="12">
+          <v-row>
+            <v-col cols="3" v-for="num in 4" :key="num">
+              <v-skeleton-loader
+                type="image, article, button"
+              ></v-skeleton-loader>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+    </v-container>
     <Swiper
       :pagination="{ el: '.swiper-pagination', clickable: true }"
       :modules="modules"
@@ -33,11 +49,10 @@
             </div>
           </v-hover>
           <v-card-text class="pl-0 pb-0">
-            ({{ item.title }})
             {{
-              item.description.split(" ").length <= 8
-                ? item.description
-                : item.description.split(" ").slice(0, 8).join(" ") + "..."
+              `(${item.title}) ${item.description}`.length <= 57
+                ? `(${item.title}) ${item.description}`
+                : `(${item.title}) ${item.description}`.substring(0, 57)
             }}
           </v-card-text>
 
@@ -182,6 +197,7 @@
 <script>
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import { Navigation, Pagination, Autoplay } from "swiper";
+import { VSkeletonLoader } from "vuetify/lib/components";
 export default {
   data: () => ({
     showItem: {},
@@ -189,6 +205,12 @@ export default {
   props: {
     products: {
       type: Array,
+    },
+    title: {
+      type: String,
+    },
+    titleColor: {
+      type: String,
     },
   },
   setup() {
@@ -199,6 +221,7 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+    VSkeletonLoader,
   },
 };
 </script>

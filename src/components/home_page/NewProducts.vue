@@ -1,8 +1,21 @@
 <template>
   <div class="new-products pt-12">
+    <div class="title px-5 d-flex align-center justify-space-between mb-5">
+      <h2 style="font-weight: 900; font-size: 30px">New Products</h2>
+      <a href="#" class="text-black" style="font-size: 14px">Shop All</a>
+    </div>
     <v-container fluid>
       <v-row>
-        <v-col cols="7">
+        <v-col cols="7" v-if="!products.length">
+          <v-row>
+            <v-col cols="4" v-for="num in 3" :key="num">
+              <v-skeleton-loader
+                type="image, article, button"
+              ></v-skeleton-loader>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-col cols="7" v-else>
           <Swiper
             :pagination="{ el: '.swiper-pagination', clickable: true }"
             :modules="modules"
@@ -34,14 +47,10 @@
                   </div>
                 </v-hover>
                 <v-card-text class="pl-0 pb-0">
-                  ({{ item.title }})
                   {{
-                    item.description + " " + item.title.split(" ").length <= 6
-                      ? item.description
-                      : item.description
-                          .split(" ")
-                          .slice(0, 6 - item.title.split(" ").length)
-                          .join(" ") + "..."
+                    `(${item.title}) ${item.description}`.length <= 40
+                      ? `(${item.title}) ${item.description}`
+                      : `(${item.title}) ${item.description}`.substring(0, 40)
                   }}
                 </v-card-text>
 
@@ -117,7 +126,7 @@
           <div class="d-flex align-center" style="height: 100%">
             <img
               src="@/assets/images/new-pro.jpeg"
-              style="width: 100%; height: 75%; object-fit: cover"
+              style="width: 100%; height: 90%; object-fit: cover"
               alt=""
             />
           </div>
@@ -130,6 +139,7 @@
 <script>
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import { Pagination, Autoplay } from "swiper";
+import { VSkeletonLoader } from "vuetify/lib/components";
 export default {
   data: () => ({
     showItem: {},
@@ -147,6 +157,7 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+    VSkeletonLoader,
   },
 };
 </script>
