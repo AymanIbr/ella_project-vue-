@@ -111,6 +111,12 @@
                       border-radius: 30px;
                       min-height: auto;
                     "
+                    @click="
+                      $router.push({
+                        name: 'product_details',
+                        params: { productId: item.id },
+                      })
+                    "
                     >Choose Options</v-btn
                   >
                 </div>

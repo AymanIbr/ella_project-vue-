@@ -9,6 +9,7 @@ export const productsModule = defineStore("productsModule", {
     beautyProduct: [],
     fragrancesProduct: [],
     categoryProducts: [],
+    singleProduct: "",
     categories: [
       {
         title: "Beauty",
@@ -60,6 +61,11 @@ export const productsModule = defineStore("productsModule", {
       await axios
         .get(`https://dummyjson.com/products/category/${category}`)
         .then((res) => (this.categoryProducts = res.data));
+    },
+    async getSingleProduct(productId) {
+      await axios
+        .get(`https://dummyjson.com/products/${productId}`)
+        .then((res) => (this.singleProduct = res.data));
     },
   },
 });

@@ -89,6 +89,12 @@
               </v-btn-toggle>
               <div>
                 <v-btn
+                  @click="
+                    $router.push({
+                      name: 'product_details',
+                      params: { productId: item.id },
+                    })
+                  "
                   density="compact"
                   variant="outlined"
                   class="px-7 pt-2 py-2 d-flex align-center justify-center mt-5"
