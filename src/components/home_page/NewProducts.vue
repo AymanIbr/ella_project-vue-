@@ -15,6 +15,7 @@
             </v-col>
           </v-row>
         </v-col>
+
         <v-col cols="7" v-else>
           <Swiper
             :pagination="{ el: '.swiper-pagination', clickable: true }"

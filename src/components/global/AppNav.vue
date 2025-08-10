@@ -7,8 +7,9 @@
           <v-col cols="3">
             <img
               src="@/assets/images/logo.png"
-              style="width: 150px; height: 50px"
+              style="width: 150px; height: 50px; cursor: pointer"
               alt=""
+              @click="$router.push({ name: 'home' })"
             />
           </v-col>
           <v-col cols="5">
@@ -105,21 +106,25 @@
           </v-col>
         </v-row>
         <v-row class="mt-6">
-          <v-col cols="5">
+          <v-col cols="7">
             <ul
               class="links d-flex justify-space-between"
               style="list-style: none"
             >
-              <li>Theme Demo</li>
-              <li>Shop</li>
-              <li>Product</li>
-              <li>New In</li>
-              <li>Must Have</li>
-              <li>Collections</li>
+              <li v-for="category in categories" :key="category.title">
+                <router-link
+                  style="color: white; text-decoration: none"
+                  :to="{
+                    name: 'products_category',
+                    params: { category: category.route, title: category.title },
+                  }"
+                  >{{ category.title }}</router-link
+                >
+              </li>
             </ul>
           </v-col>
           <v-col cols="2"></v-col>
-          <v-col cols="5" class="d-flex justify-end align-center gap-4">
+          <v-col cols="3" class="d-flex justify-end align-center gap-4">
             <v-btn text class="white--text d-flex align-center gap-1">
               <v-icon size="28" color="#256ef1">mdi-help-circle</v-icon>
               Help
@@ -169,12 +174,17 @@
 </template>
 
 <script>
+import { productsModule } from "@/stores/products";
+import { mapState } from "pinia";
 export default {
   inject: ["Emitter"],
   methods: {
     openCart() {
       this.Emitter.emit("openCart");
     },
+  },
+  computed: {
+    ...mapState(productsModule, ["categories"]),
   },
   data: () => ({
     selectedLang: [

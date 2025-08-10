@@ -10,27 +10,21 @@
                 style="font-size: 14px; font-weight: 900"
                 >SHOP</v-card-title
               >
-              <v-card-text class="pt-0 pb-3 px-0" style="color: rgb(71, 71, 71)"
-                >Electronics</v-card-text
+              <v-card-text
+                class="pt-0 pb-3 px-0"
+                style="color: rgb(71, 71, 71)"
+                v-for="category in categories"
+                :key="category.title"
               >
-              <v-card-text class="pt-0 pb-3 px-0" style="color: rgb(71, 71, 71)"
-                >Computer & Labs</v-card-text
-              >
-              <v-card-text class="pt-0 pb-3 px-0" style="color: rgb(71, 71, 71)"
-                >SmartPhones & Tablets</v-card-text
-              >
-              <v-card-text class="pt-0 pb-3 px-0" style="color: rgb(71, 71, 71)"
-                >Cameras</v-card-text
-              >
-              <v-card-text class="pt-0 pb-3 px-0" style="color: rgb(71, 71, 71)"
-                >Video Games & Systems</v-card-text
-              >
-              <v-card-text class="pt-0 pb-3 px-0" style="color: rgb(71, 71, 71)"
-                >Home Furniture</v-card-text
-              >
-              <v-card-text class="pt-0 pb-3 px-0" style="color: rgb(71, 71, 71)"
-                >Weekly Special</v-card-text
-              >
+                <router-link
+                  style="color: rgb(71, 71, 71); text-decoration: none"
+                  :to="{
+                    name: 'products_category',
+                    params: { category: category.route, title: category.title },
+                  }"
+                  >{{ category.title }}</router-link
+                >
+              </v-card-text>
             </v-card>
           </v-col>
           <v-col cols="3">
@@ -99,6 +93,8 @@
                 src="@/assets/images/footer.png"
                 class="w-50 color-black mb-1"
                 alt=""
+                style="cursor: pointer"
+                @click="$router.push({ name: 'home' })"
               />
               <v-card-text
                 class="pt-0 pb-3 px-0 d-flex justify-center"
@@ -250,3 +246,13 @@
     </v-footer>
   </div>
 </template>
+
+<script>
+import { productsModule } from "@/stores/products";
+import { mapState } from "pinia";
+export default {
+  computed: {
+    ...mapState(productsModule, ["categories"]),
+  },
+};
+</script>

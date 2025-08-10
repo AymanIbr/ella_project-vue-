@@ -4,22 +4,32 @@
       <v-container fluid>
         <v-row class="d-flex justify-around align-center">
           <v-col cols="2" class="mt-2">
-            <img src="@/assets/images/logo.png" class="w-50" alt="" />
+            <img
+              src="@/assets/images/logo.png"
+              class="w-50"
+              alt=""
+              style="cursor: pointer"
+              @click="$router.push({ name: 'home' })"
+            />
           </v-col>
-          <v-col cols="5">
+          <v-col cols="7">
             <ul
               class="links d-flex justify-space-between"
               style="list-style: none"
             >
-              <li>Theme Demo</li>
-              <li>Shop</li>
-              <li>Product</li>
-              <li>New In</li>
-              <li>Must Have</li>
-              <li>Collections</li>
+              <li v-for="category in categories" :key="category.title">
+                <router-link
+                  style="color: white; text-decoration: none"
+                  :to="{
+                    name: 'products_category',
+                    params: { category: category.route, title: category.title },
+                  }"
+                  >{{ category.title }}</router-link
+                >
+              </li>
             </ul>
           </v-col>
-          <v-col cols="5" class="d-flex align-center justify-end ga-10">
+          <v-col cols="3" class="d-flex align-center justify-end ga-10">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -59,8 +69,13 @@
 </template>
 
 <script>
+import { productsModule } from "@/stores/products";
+import { mapState } from "pinia";
 export default {
   inject: ["Emitter"],
+  computed: {
+    ...mapState(productsModule, ["categories"]),
+  },
   methods: {
     openCart() {
       this.Emitter.emit("openCart");
