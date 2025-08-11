@@ -1,14 +1,17 @@
 <template>
   <app-layout>
     <router-view />
+    <QuickView />
   </app-layout>
 </template>
 
 <script>
+import QuickView from "@/components/home_page/QuickView.vue";
 import AppLayout from "./components/global/AppLayout.vue";
 export default {
   components: {
     AppLayout,
+    QuickView,
   },
 };
 </script>

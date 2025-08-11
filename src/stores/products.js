@@ -9,7 +9,7 @@ export const productsModule = defineStore("productsModule", {
     beautyProduct: [],
     fragrancesProduct: [],
     categoryProducts: [],
-    singleProduct: "",
+    singleProduct: {},
     categories: [
       {
         title: "Beauty",

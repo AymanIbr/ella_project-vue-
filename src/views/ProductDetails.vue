@@ -103,7 +103,7 @@
               />
               <v-icon @click="quantity++" size="22">mdi-plus</v-icon>
             </div>
-            <v-card-actions class="mt-7 w-100 px-0">
+            <v-card-actions class="mt-2 w-100 px-0">
               <v-btn
                 variant="outlined"
                 class="text-white w-75"

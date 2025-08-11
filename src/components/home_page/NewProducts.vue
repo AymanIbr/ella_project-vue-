@@ -29,7 +29,7 @@
               <v-card elevation="0" class="pb-5 h-100 w-100">
                 <v-hover v-slot="{ isHovering, props }">
                   <div
-                    class="img-parent"
+                    class="img-parent position-relative"
                     style="height: 160px; overflow: hidden"
                   >
                     <img
@@ -45,6 +45,27 @@
                       alt=""
                       v-bind="props"
                     />
+                    <v-btn
+                      density="compact"
+                      height="35"
+                      width="60"
+                      variant="outlined"
+                      class="bg-white quick-view-btn"
+                      style="
+                        text-transform: none;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-radius: 30px;
+                        border: none;
+                        font-size: 12px;
+                        transition: 0.2 all ease-in-out;
+                        opacity: 0;
+                      "
+                      @click="openQuickView(item)"
+                      >Quick View</v-btn
+                    >
                   </div>
                 </v-hover>
                 <v-card-text class="pl-0 pb-0">
@@ -148,6 +169,12 @@ import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import { Pagination, Autoplay } from "swiper";
 import { VSkeletonLoader } from "vuetify/lib/components";
 export default {
+  inject: ["Emitter"],
+  methods: {
+    openQuickView(product) {
+      this.Emitter.emit("openQuickView", product);
+    },
+  },
   data: () => ({
     showItem: {},
   }),
@@ -168,3 +195,35 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.new-products {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgb(95, 95, 95);
+    border-radius: 50%;
+    background-color: white;
+    top: 40%;
+    &::after {
+      font-size: 13px;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: rgb(53, 53, 53);
+      font-weight: 900;
+    }
+  }
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+  }
+  .img-parent:hover {
+    .quick-view-btn {
+      opacity: 1 !important;
+    }
+  }
+}
+</style>
