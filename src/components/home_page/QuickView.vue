@@ -143,6 +143,8 @@
                       border-radius: 30px;
                       text-transform: none;
                     "
+                    @click="addToCart(product)"
+                    :loading="btnLoading"
                     >Add To Cart</v-btn
                   >
                 </v-card-actions>
@@ -157,7 +159,23 @@
 
 <script>
 import { VSkeletonLoader } from "vuetify/lib/components";
+import { cartStore } from "@/stores/carts";
+import { mapActions } from "pinia";
 export default {
+  methods: {
+    ...mapActions(cartStore, ["addItem"]),
+    addToCart(item) {
+      item.quantity = this.quantity;
+      this.btnLoading = true;
+      setTimeout(() => {
+        this.btnLoading = false;
+        this.addItem(item);
+        this.Emitter.emit("openCart");
+        this.Emitter.emit("ShowMsg", item.title);
+        this.dialog = false;
+      }, 1000);
+    },
+  },
   inject: ["Emitter"],
   mounted() {
     this.Emitter.on("openQuickView", (data) => {
@@ -178,6 +196,7 @@ export default {
     quantity: 1,
     dialog: false,
     product: "",
+    btnLoading: false,
   }),
 };
 </script>

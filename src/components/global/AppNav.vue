@@ -81,14 +81,18 @@
                 <span style="color: #ffb574">Sing In</span>
               </div>
               <div
-                class="wishlists d-flex flex-column align-center cursor-pointer"
+                class="wishlists d-flex flex-column align-center"
+                :style="`cursor: pointer; pointer-events: ${
+                  $route.name == 'cart_page' ? 'none' : 'unset'
+                }`"
                 @click="openCart"
               >
                 <v-badge
                   location="top right"
-                  content="2"
+                  :content="cartItems.length"
                   color="#205dc2"
                   offset-x="-14px"
+                  v-if="cartItems.length"
                 ></v-badge>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -175,6 +179,7 @@
 
 <script>
 import { productsModule } from "@/stores/products";
+import { cartStore } from "@/stores/carts";
 import { mapState } from "pinia";
 export default {
   inject: ["Emitter"],
@@ -185,6 +190,7 @@ export default {
   },
   computed: {
     ...mapState(productsModule, ["categories"]),
+    ...mapState(cartStore, ["cartItems"]),
   },
   data: () => ({
     selectedLang: [
