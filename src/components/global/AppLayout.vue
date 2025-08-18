@@ -2,12 +2,14 @@
   <div class="layout">
     <v-layout class="position-relative">
       <CartDrawer />
-      <v-main style="padding-top: 150px">
+      <v-main
+        :style="`padding-top: ${$route.name == 'check_out' ? '0px' : '150px'}`"
+      >
         <slot />
       </v-main>
-      <AppNav />
-      <FixedNav />
-      <AppFooter />
+      <AppNav v-if="$route.name != 'check_out'" />
+      <FixedNav v-if="$route.name != 'check_out'" />
+      <AppFooter v-if="$route.name != 'check_out'" />
     </v-layout>
   </div>
 </template>

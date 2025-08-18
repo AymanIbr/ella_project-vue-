@@ -25,7 +25,7 @@
               :fill="
                 parseInt((calcTotalPrice / 10000) * 100) < 50
                   ? '#F44336'
-                  : parseInt((calcTotalPrice / 10000) * 100) > 50 &&
+                  : parseInt((calcTotalPrice / 10000) * 100) >= 50 &&
                     parseInt((calcTotalPrice / 10000) * 100) < 100
                   ? '#ff9800'
                   : '#4CAF50'
@@ -49,7 +49,7 @@
               :color="
                 parseInt((calcTotalPrice / 10000) * 100) < 50
                   ? 'red'
-                  : parseInt((calcTotalPrice / 10000) * 100) > 50 &&
+                  : parseInt((calcTotalPrice / 10000) * 100) >= 50 &&
                     parseInt((calcTotalPrice / 10000) * 100) < 100
                   ? 'orange'
                   : 'green'
@@ -313,8 +313,8 @@
                 elevation="0"
                 class="w-100 text-white"
                 color="#3673e2"
-                >Check Out</v-btn
-              >
+                >Calculate Shipping
+              </v-btn>
             </v-card-actions>
             <v-divider length="100%" color="black"></v-divider>
 
@@ -344,6 +344,7 @@
                 elevation="0"
                 class="w-100 mx-0"
                 color="#3673e2"
+                @click="toCheckOut()"
                 >Proceed To Check Out</v-btn
               >
               <v-btn
@@ -389,7 +390,15 @@ export default {
     },
   },
   methods: {
-    ...mapActions(cartStore, ["getCartItems", "deleteItem"]),
+    ...mapActions(cartStore, [
+      "getCartItems",
+      "deleteItem",
+      "setToLocalStorage",
+    ]),
+    toCheckOut() {
+      this.setToLocalStorage();
+      this.$router.push({ name: "check_out" });
+    },
   },
 };
 </script>

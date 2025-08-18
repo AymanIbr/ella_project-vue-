@@ -1,6 +1,6 @@
 <template>
   <div class="products-category mt-10">
-    <h2 class="text-center">{{ $route.params.title }}</h2>
+    <h2 class="text-center">{{ $route.query.title }}</h2>
 
     <v-container>
       <v-card class="pt-5" elevation="0" :loading="loading">
@@ -163,15 +163,20 @@ export default {
   },
   watch: {
     async $route() {
-      document.documentElement.scrollTo(0, 0);
-      this.loading = true;
-      await this.getProductsByCategory(this.$route.params.category);
-      this.loading = false;
+      if (this.$route.name == "products_category") {
+        document.documentElement.scrollTo(0, 0);
+        this.loading = true;
+        await this.getProductsByCategory(this.$route.query.category);
+        this.loading = false;
+      }
     },
   },
   async mounted() {
+    if (!this.$route.query.category) {
+      return this.$router.go(-1);
+    }
     this.loading = true;
-    await this.getProductsByCategory(this.$route.params.category);
+    await this.getProductsByCategory(this.$route.query.category);
     this.loading = false;
   },
 };

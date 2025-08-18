@@ -8,7 +8,8 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/products/:category/:title",
+    // path: "/products/:category/:title",
+    path: "/products",
     name: "products_category",
     component: () => import("@/views/ProductsCategory.vue"),
   },
@@ -21,6 +22,11 @@ const routes = [
     path: "/cart",
     name: "cart_page",
     component: () => import("@/views/CartPage.vue"),
+  },
+  {
+    path: "/checkout",
+    name: "check_out",
+    component: () => import("@/views/CheckOut.vue"),
   },
 ];
 

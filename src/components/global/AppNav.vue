@@ -120,7 +120,7 @@
                   style="color: white; text-decoration: none"
                   :to="{
                     name: 'products_category',
-                    params: { category: category.route, title: category.title },
+                    query: { category: category.route, title: category.title },
                   }"
                   >{{ category.title }}</router-link
                 >
@@ -147,7 +147,7 @@
               >
               <v-icon>mdi-chevron-down</v-icon>
               <v-menu activator="#language-btn">
-                <v-list v-model:selected="selectedLang">
+                <v-list v-model:selected="selectedLang" mandatory>
                   <v-list-item
                     v-for="lang in langs"
                     :key="lang.lang"

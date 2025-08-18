@@ -2,7 +2,18 @@
   <div class="new-products pt-12">
     <div class="title px-5 d-flex align-center justify-space-between mb-5">
       <h2 style="font-weight: 900; font-size: 30px">New Products</h2>
-      <a href="#" class="text-black" style="font-size: 14px">Shop All</a>
+      <router-link
+        class="text-black"
+        style="font-size: 14px"
+        :to="{
+          name: 'products_category',
+          query: {
+            title: categories[index].title,
+            category: categories[index].route,
+          },
+        }"
+        >Shop All</router-link
+      >
     </div>
     <v-container fluid>
       <v-row>
@@ -101,6 +112,7 @@
                 <v-btn-toggle
                   v-model="showItem[item.title]"
                   style="overflow: visible"
+                  mandatory
                 >
                   <v-btn
                     size="x-small"
@@ -135,7 +147,7 @@
                     @click="
                       $router.push({
                         name: 'product_details',
-                        params: { productId: item.id },
+                        query: { productId: item.id },
                       })
                     "
                     >Choose Options</v-btn
@@ -168,6 +180,8 @@
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import { Pagination, Autoplay } from "swiper";
 import { VSkeletonLoader } from "vuetify/lib/components";
+import { productsModule } from "@/stores/products";
+import { mapState } from "pinia";
 export default {
   inject: ["Emitter"],
   methods: {
@@ -175,12 +189,18 @@ export default {
       this.Emitter.emit("openQuickView", product);
     },
   },
+  computed: {
+    ...mapState(productsModule, ["categories"]),
+  },
   data: () => ({
     showItem: {},
   }),
   props: {
     products: {
       type: Array,
+    },
+    index: {
+      type: Number,
     },
   },
   setup() {

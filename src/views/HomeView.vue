@@ -7,14 +7,16 @@
       :products="flashDeals"
       title="Flash Deals"
       titleColor="red"
+      index="0"
     />
     <CyberBanner />
-    <NewProduct :products="newProducts" />
+    <NewProduct :products="newProducts" index="2" />
     <QualityFeatures />
     <ProductsComponent
       :products="beautyProduct"
       title="Top Mobile Phons"
       titleColor="#404040"
+      index="3"
     />
     <v-container fluid>
       <v-row>
@@ -30,6 +32,7 @@
       :products="fragrancesProduct"
       title="Top Fragrances"
       titleColor="#404040"
+      index="5"
     />
     <WhyShopwithus />
   </div>
