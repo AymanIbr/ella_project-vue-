@@ -106,7 +106,7 @@
             >Your order now is included Free Shipping</v-card-text
           >
         </v-col>
-        <v-col cols="8" class="px-3" v-if="cartItems.length">
+        <v-col cols="12" lg="8" class="px-3" v-if="cartItems.length">
           <v-table class="w-100">
             <thead>
               <tr>
@@ -234,7 +234,12 @@
             <span> Secure Shopping Guarantee </span>
           </v-card-text>
         </v-col>
-        <v-col cols="4" class="px-3" v-if="cartItems.length">
+        <v-col
+          cols="12"
+          lg="4"
+          class="px-3 mt-8 mt-lg-0"
+          v-if="cartItems.length"
+        >
           <v-card elevation="0">
             <v-card-title style="font-size: 14px; font-weight: bold"
               >ORDER SUMMARY</v-card-title
@@ -402,3 +407,15 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+//Media Quires
+
+@media (max-width: 767px) {
+  .cart-page {
+    table {
+      width: 800px !important;
+    }
+  }
+}
+</style>

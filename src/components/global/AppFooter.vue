@@ -3,7 +3,7 @@
     <v-footer :app="true" absolute>
       <v-container fluid class="px-0 pb-0">
         <v-row>
-          <v-col cols="3">
+          <v-col cols="12" sm="6" md="4" lg="3">
             <v-card elevation="0" color="transparent">
               <v-card-title
                 class="px-0"
@@ -27,7 +27,7 @@
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col cols="3">
+          <v-col cols="12" sm="6" md="4" lg="3">
             <v-card elevation="0" color="transparent">
               <v-card-title
                 class="px-0"
@@ -57,7 +57,7 @@
               >
             </v-card>
           </v-col>
-          <v-col cols="3">
+          <v-col cols="12" sm="6" md="4" lg="3">
             <v-card elevation="0" color="transparent">
               <v-card-title
                 class="px-0"
@@ -87,7 +87,7 @@
               >
             </v-card>
           </v-col>
-          <v-col cols="3" class="pt-5">
+          <v-col cols="12" sm="6" md="4" lg="3" class="pt-5">
             <v-card elevation="0" color="transparent">
               <img
                 src="@/assets/images/footer.png"
@@ -97,7 +97,7 @@
                 @click="$router.push({ name: 'home' })"
               />
               <v-card-text
-                class="pt-0 pb-3 px-0 d-flex justify-center"
+                class="pt-0 pb-3 px-0 d-flex justify-start justify-sm-center"
                 style="color: rgb(71, 71, 71); gap: 16px"
               >
                 <span class="pt-1"
@@ -215,14 +215,14 @@
           class="d-flex align-center justify-space-between pt-7 bg-grey-lighten-2 pb-8"
           color="white"
         >
-          <v-col cols="6">
+          <v-col cols="12" md="6" class="text-center">
             <p style="color: rgb(127, 127, 127); font-size: 14px">
               &copy; {{ new Date().getFullYear() }} Ella Deom. All Rights
               Reserved. Powered By Ayman
             </p>
           </v-col>
 
-          <v-col cols="6" class="d-flex justify-end">
+          <v-col cols="12" md="6" class="d-flex justify-center justify-md-end">
             <div class="master-card d-flex align-center" style="gap: 10px">
               <img
                 src="@/assets/images/visa-4-logo-svgrepo-com.svg"

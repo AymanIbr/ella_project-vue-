@@ -2,7 +2,15 @@
   <div class="quality-features py-13 bg-grey-lighten-2">
     <v-container fluid>
       <v-row>
-        <v-col v-for="item in cards" :key="item.title" class="px-2">
+        <v-col
+          cols="12"
+          sm="6"
+          md="3"
+          lg=""
+          v-for="item in cards"
+          :key="item.title"
+          class="px-2"
+        >
           <v-hover v-slot="{ isHovering, props }">
             <v-card
               v-bind="props"

@@ -3,7 +3,7 @@
     <v-navigation-drawer
       temporary
       location="right"
-      width="370"
+      :width="windowWidth <= 767 ? windowWidth / 2 : 370"
       v-model="drawer"
       class="pr-1"
     >
@@ -38,7 +38,7 @@
             viewBox="0 0 24 24"
             fill="#F44336"
             width="30"
-            :style="` position: absolute;
+            :style="` position: absolute ;
               bottom: 50%;
               z-index: 1;
               left: calc(${
@@ -105,10 +105,10 @@
             :key="item.id"
             class="align-center mb-3"
           >
-            <v-col cols="5">
+            <v-col cols="12" sm="5">
               <img :src="item.thumbnail" class="w-100" alt="" />
             </v-col>
-            <v-col cols="7">
+            <v-col cols="12" sm="7">
               <v-card-title
                 class="px-0"
                 style="white-space: pre-wrap; font-size: 14px; line-height: 1.2"
@@ -229,6 +229,11 @@ export default {
     },
   },
   inject: ["Emitter"],
+  props: {
+    windowWidth: {
+      type: Number,
+    },
+  },
   data: () => ({
     drawer: false,
   }),
@@ -253,6 +258,19 @@ export default {
   &::-webkit-scrollbar-track {
     width: 5px;
     background-color: rgb(227, 226, 226);
+  }
+}
+// Media Quires
+@media (max-width: 580px) {
+  .drawer {
+    .v-card-text {
+      font-size: 12px;
+    }
+    button {
+      height: 30px !important;
+      font-size: 11px;
+      width: 170px !important;
+    }
   }
 }
 </style>

@@ -2,9 +2,9 @@
   <div class="check-out">
     <v-container fluid class="ma-0 pa-0">
       <v-row>
-        <v-col cols="7">
+        <v-col cols="12" class="order-1 order-md-0" md="6" lg="7">
           <v-card
-            class="w-100"
+            class="w-100 checkout-left"
             color="white"
             elevation="0"
             style="padding: 60px 40px 0px 120px"
@@ -181,12 +181,14 @@
             >
           </v-card>
         </v-col>
-        <v-col cols="5">
+        <v-col cols="12" md="6" lg="5">
           <v-card
+            class="checkout-right"
             color="grey-lighten-3"
             elevation="0"
             width="100%"
             height="100%"
+            min-height="400px"
             style="padding: 60px 120px 0px 40px"
           >
             <v-card
@@ -279,3 +281,16 @@ export default {
   },
 };
 </script>
+
+<style>
+@media (max-width: 1280px) {
+  .checkout-left {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+  .checkout-right {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+}
+</style>

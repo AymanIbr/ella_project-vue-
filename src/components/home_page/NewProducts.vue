@@ -27,7 +27,7 @@
           </v-row>
         </v-col>
 
-        <v-col cols="7" v-else>
+        <v-col cols="12" md="7" class="order-1 order-md-0" v-else>
           <Swiper
             :pagination="{ el: '.swiper-pagination', clickable: true }"
             :modules="modules"
@@ -35,6 +35,7 @@
             :space-between="20"
             class="pb-9 px-5"
             :autoplay="{ delay: 3000 }"
+            :breakpoints="breakpoints"
           >
             <swiper-slide v-for="item in products" :key="item.id">
               <v-card elevation="0" class="pb-5 h-100 w-100">
@@ -159,7 +160,8 @@
           </Swiper>
         </v-col>
         <v-col
-          cols="5"
+          cols="12"
+          md="5"
           class="d-flex justify-center pa-0"
           style="height: 500px"
         >
@@ -194,6 +196,17 @@ export default {
   },
   data: () => ({
     showItem: {},
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      580: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      },
+    },
   }),
   props: {
     products: {

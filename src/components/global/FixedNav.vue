@@ -1,6 +1,11 @@
 <template>
   <div class="fixed-nav">
-    <v-app-bar color="#02218f">
+    <v-app-bar
+      color="#02218f"
+      fixed
+      elevation="2"
+      style="top: 0; z-index: 1000"
+    >
       <v-container fluid>
         <v-row class="d-flex justify-around align-center">
           <v-col cols="2" class="mt-2">

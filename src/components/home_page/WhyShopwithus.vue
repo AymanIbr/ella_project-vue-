@@ -5,7 +5,7 @@
     </div>
     <v-container fluid>
       <v-row>
-        <v-col cols="3" class="px-1">
+        <v-col cols="12" sm="6" md="4" lg="3" class="px-1 mb-4 mb-lg-0">
           <v-card
             elevation="0"
             class="text-center text-white"
@@ -32,7 +32,7 @@
             >
           </v-card>
         </v-col>
-        <v-col cols="3">
+        <v-col cols="12" sm="6" md="4" lg="3" class="mb-4 mb-lg-0">
           <v-card
             elevation="0"
             class="text-center text-white"
@@ -58,7 +58,7 @@
             >
           </v-card>
         </v-col>
-        <v-col cols="3">
+        <v-col cols="12" sm="6" md="4" lg="3" class="mb-4 mb-lg-0">
           <v-card
             elevation="0"
             class="text-center text-white"
@@ -84,7 +84,7 @@
             >
           </v-card>
         </v-col>
-        <v-col cols="3" class="px-1">
+        <v-col cols="12" sm="6" md="4" lg="3" class="px-1 mb-4 mb-lg-0">
           <v-card
             elevation="0"
             class="text-center text-white"

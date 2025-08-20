@@ -19,7 +19,7 @@
       <v-card elevation="0" class="content-card">
         <v-container fluid class="bg-white pt-10">
           <v-row>
-            <v-col cols="7" class="pt-0">
+            <v-col cols="12" md="7" class="pt-0">
               <img
                 :src="tab ? tab : product.thumbnail"
                 class="w-100"
@@ -42,7 +42,7 @@
                 </v-tab>
               </v-tabs>
             </v-col>
-            <v-col cols="5" class="pt-0 pl-5">
+            <v-col cols="12" md="5" class="pt-0 pl-5 mt-5 mt-md-0">
               <v-skeleton-loader
                 v-if="loading"
                 type="article, article, article"

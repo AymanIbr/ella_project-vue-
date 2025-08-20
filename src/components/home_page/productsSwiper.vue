@@ -45,6 +45,7 @@
         pauseOnMouseEnter: true,
         disableOnInteraction: false,
       }"
+      :breakpoints="breakpoints"
       :loop="true"
     >
       <swiper-slide v-for="item in products" :key="item.id">
@@ -259,6 +260,20 @@ export default {
   },
   data: () => ({
     showItem: {},
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      580: {
+        slidesPerView: 2,
+      },
+      767: {
+        slidesPerView: 3,
+      },
+      990: {
+        slidesPerView: 4,
+      },
+    },
   }),
   props: {
     products: {

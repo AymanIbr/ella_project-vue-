@@ -1,26 +1,17 @@
 <template>
   <div class="banner">
     <div class="parent">
-      <v-container>
-        <v-row>
-          <v-col cols="6">
-            <div class="cont">
-              <h3>
-                <span>Huge Saving</span> on <br />
-                UHD Televisions
-              </h3>
-              <p class="hint">Sale up to 50% off on all UHD TVs</p>
-              <v-btn
-                variant="outlined"
-                class="custom-btn"
-                density="comfortable"
-              >
-                Shop Now
-              </v-btn>
-            </div>
-          </v-col>
-        </v-row>
-      </v-container>
+      <img src="@/assets/images/banner.png" alt="" />
+      <div class="cont">
+        <h3>
+          <span>Huge Saving</span> on <br />
+          UHD Televisions
+        </h3>
+        <p class="hint">Sale up to 50% off on all UHD TVs</p>
+        <v-btn variant="outlined" class="custom-btn" density="comfortable">
+          Shop Now
+        </v-btn>
+      </div>
     </div>
   </div>
 </template>
@@ -29,12 +20,20 @@
 .banner {
   .parent {
     height: 420px;
-    background-image: url("../../assets/images/banner.png");
-    background-size: cover;
-    background-attachment: left top;
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(70%);
+    }
     .cont {
       color: white;
       padding: 40px 0 0 100px;
+      position: absolute;
+      left: 40px;
+      top: 40px;
+      z-index: 10;
       h3 {
         font-size: 45px;
         font-weight: 900;
@@ -56,6 +55,64 @@
         display: flex;
         align-items: center;
         justify-content: center;
+      }
+    }
+  }
+}
+// Media Quires
+@media (max-width: 990px) {
+  .banner {
+    .parent {
+      .cont {
+        h3 {
+          font-size: 35px;
+        }
+        width: 400px;
+        left: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .banner {
+    .parent {
+      height: 320px;
+      .cont {
+        padding-left: 20px;
+        h3 {
+          font-size: 30px;
+        }
+        width: 400px;
+        left: 0;
+        .hint {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  .banner {
+    .parent {
+      height: 250px;
+      .cont {
+        padding-left: 20px;
+        padding-top: 20px;
+        h3 {
+          font-size: 24px;
+        }
+        width: 80%;
+        left: 0;
+        .hint {
+          font-size: 12px;
+        }
+        button {
+          height: 25px !important;
+          width: 130px !important;
+          font-size: 11px !important;
+        }
       }
     }
   }

@@ -13,10 +13,13 @@
         </v-row>
         <v-row v-if="!loading">
           <v-col
-            cols="3"
+            cols="12"
+            sm="6"
+            md="4"
+            lg="3"
             v-for="item in categoryProducts.products"
             :key="item.id"
-            class="px-5"
+            class="px-10 px-sm-5 mt-8 mt-lg-0"
           >
             <v-card elevation="0" class="pb-5 h-100 w-100">
               <v-hover v-slot="{ isHovering, props }">

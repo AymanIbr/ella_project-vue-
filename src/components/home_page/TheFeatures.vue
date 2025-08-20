@@ -2,13 +2,15 @@
   <div class="features">
     <v-container>
       <v-row>
-        <v-col>
-          <div class="parent d-flex justify-center align-center">
+        <v-col cols="12" sm="6" md="4" lg="4">
+          <div
+            class="parent d-flex justify-center align-center flex-column flex-sm-row"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              class="mr-5"
+              class="mr-5 mb-5 mb-sm-0"
               style="width: 30px"
             >
               <path
@@ -18,13 +20,15 @@
             <span>Free Shipping & Returns</span>
           </div>
         </v-col>
-        <v-col>
-          <div class="parent d-flex justify-center align-center second">
+        <v-col cols="12" sm="6" md="4" lg="4">
+          <div
+            class="parent d-flex justify-center align-center second flex-column flex-sm-row"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              class="mr-5"
+              class="mr-5 mb-5 mb-sm-0"
               style="width: 30px"
             >
               <path
@@ -34,13 +38,15 @@
             <span>Lowest Price Guarantee</span>
           </div>
         </v-col>
-        <v-col>
-          <div class="parent d-flex justify-center align-center">
+        <v-col cols="12" sm="6" md="4" lg="4">
+          <div
+            class="parent d-flex justify-center align-center flex-column flex-sm-row"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              class="mr-5"
+              class="mr-5 mb-5 mb-sm-0"
               style="width: 30px"
             >
               <path
@@ -78,6 +84,19 @@
       transform: translateY(-50%);
       width: 1px;
       height: 70%;
+    }
+  }
+}
+
+// Media Quires
+
+@media (max-width: 600px) {
+  .features {
+    .second {
+      &::before,
+      &::after {
+        display: none;
+      }
     }
   }
 }
